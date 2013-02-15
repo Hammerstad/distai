@@ -1,0 +1,14 @@
+package Agents;
+
+public class defectAgent extends abstractAgent{
+  
+	@Override
+	public String sendMessage() {
+		//Only defect.
+		return defect;
+	}
+
+	@Override
+	public void receiveMessage(String msg) {
+	}
+}
