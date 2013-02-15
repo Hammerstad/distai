@@ -18,6 +18,24 @@ public class TournamentBot extends Agent {
 		scores = new HashMap<>();
 	}
 
+	@Override
+	public void setup(){
+		TournamentBot tb = new TournamentBot();
+		tb.runTournament();
+	}
+	
+	private void runTournament(){
+		for(Agent agent:allAgents){
+			activeAgents[0] = agent;
+			for(Agent secondAgent : allAgents){
+				if(agent.equals(secondAgent))
+					return;
+				activeAgents[1] = secondAgent;
+				runTournamentBetweenTwoAgents();
+			}
+		}
+	}
+	
 	private void runTournamentBetweenTwoAgents() {
 		presentPrisonersWithDilemma();
 		String[] answers = receiveAnswers();
