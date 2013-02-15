@@ -12,30 +12,39 @@ public class TournamentBot extends Agent {
 	private Agent[] activeAgents;
 	private Map<Agent, Integer> scores;
 
+	private Map<Agent, Integer> RSCORE;
+	private int NROFRNDS = 0;
+
 	public TournamentBot() {
 		allAgents = new ArrayList<Agent>();
 		activeAgents = new Agent[2];
 		scores = new HashMap<>();
+		RSCORE = new HashMap<>();
 	}
 
 	@Override
-	public void setup(){
-		TournamentBot tb = new TournamentBot();
-		tb.runTournament();
+	public void setup() {
+		for (NROFRNDS = 10; NROFRNDS < 40; NROFRNDS += 10) {
+			TournamentBot tb = new TournamentBot();
+			tb.runTournament();
+			calculateScores();
+		}
 	}
-	
-	private void runTournament(){
-		for(Agent agent:allAgents){
+
+	private void runTournament() {
+		for (Agent agent : allAgents) {
 			activeAgents[0] = agent;
-			for(Agent secondAgent : allAgents){
-				if(agent.equals(secondAgent))
+			for (Agent secondAgent : allAgents) {
+				if (agent.equals(secondAgent))
 					return;
 				activeAgents[1] = secondAgent;
-				runTournamentBetweenTwoAgents();
+				for (int i = 0; i < NROFRNDS; i++) {
+					runTournamentBetweenTwoAgents();
+				}
 			}
 		}
 	}
-	
+
 	private void runTournamentBetweenTwoAgents() {
 		presentPrisonersWithDilemma();
 		String[] answers = receiveAnswers();
@@ -44,7 +53,7 @@ public class TournamentBot extends Agent {
 		addScoreToFinalScore(score);
 	}
 
-	private void presentPrisonersWithDilemma(){
+	private void presentPrisonersWithDilemma() {
 		ACLMessage msg = new ACLMessage(ACLMessage.CFP);
 		msg.setContent("DILEMMA");
 		msg.setSender(getAID());
@@ -84,7 +93,7 @@ public class TournamentBot extends Agent {
 			send(msg);
 		}
 	}
-	
+
 	private void addScoreToFinalScore(int[] score) {
 		for (int i = 0; i < score.length; i++) {
 			int currentScore = scores.get(activeAgents[i]);
@@ -106,6 +115,10 @@ public class TournamentBot extends Agent {
 			}
 		}
 		return decisions;
+	}
+
+	private void calculateScores() {
+
 	}
 
 }
