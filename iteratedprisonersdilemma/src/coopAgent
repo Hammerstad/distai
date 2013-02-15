@@ -1,0 +1,15 @@
+package Agents;
+
+
+public class coopAgent extends abstractAgent{
+
+  @Override
+	public String sendMessage() {
+		//Only cooperate.
+		return coop;
+	}
+
+	@Override
+	public void receiveMessage(String msg) {
+	}
+}
