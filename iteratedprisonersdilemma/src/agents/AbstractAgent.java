@@ -1,7 +1,4 @@
-package Agents;
-
-import java.awt.SplashScreen;
-
+package agents;
 import jade.content.lang.sl.SLCodec;
 import jade.core.Agent;
 import jade.domain.FIPANames;
@@ -10,13 +7,13 @@ import jade.domain.FIPAAgentManagement.FIPAManagementVocabulary;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
-public abstract class abstractAgent extends Agent{
+public abstract class AbstractAgent extends Agent{
   
 	public static final String defect = "DEFECT";
 	public static final String coop = "COOP";
 	public static final String dilemma = "DILEMMA";
 	
-	public abstractAgent(){
+	public AbstractAgent(){
 		super();
 	}
 	

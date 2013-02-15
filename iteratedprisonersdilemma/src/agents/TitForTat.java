@@ -1,6 +1,5 @@
-package Agents;
-
-public class titfortat extends abstractAgent {
+package agents;
+public class TitForTat extends AbstractAgent {
 
   private String message = coop;
 

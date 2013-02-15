@@ -1,6 +1,5 @@
-package Agents;
-
-public class defectAgent extends abstractAgent{
+package agents;
+public class DefectAgent extends AbstractAgent{
   
 	@Override
 	public String sendMessage() {

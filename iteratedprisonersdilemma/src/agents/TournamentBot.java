@@ -1,3 +1,4 @@
+package agents;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
@@ -17,17 +18,32 @@ public class TournamentBot extends Agent {
 
 	public TournamentBot() {
 		allAgents = new ArrayList<Agent>();
+		allAgents.add(new CoopAgent());
+		allAgents.add(new DefectAgent());
+		allAgents.add(new TitForTat());
 		activeAgents = new Agent[2];
 		scores = new HashMap<>();
 		RSCORE = new HashMap<>();
 	}
+	
+	private void reset(){
+		allAgents = new ArrayList<Agent>();
+		allAgents.add(new CoopAgent());
+		allAgents.add(new DefectAgent());
+		allAgents.add(new TitForTat());
+		activeAgents = new Agent[2];
+		scores = new HashMap<>();
+		RSCORE = new HashMap<>();
+		
+	}
 
 	@Override
 	public void setup() {
+		TournamentBot tb = new TournamentBot();
 		for (NROFRNDS = 10; NROFRNDS < 40; NROFRNDS += 10) {
-			TournamentBot tb = new TournamentBot();
 			tb.runTournament();
 			calculateScores();
+			this.reset();
 		}
 	}
 
@@ -119,6 +135,10 @@ public class TournamentBot extends Agent {
 
 	private void calculateScores() {
 
+	}
+
+	public static void Main(String[] args) {
+		Agent a = new TournamentBot();
 	}
 
 }

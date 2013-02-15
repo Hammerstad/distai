@@ -1,7 +1,5 @@
-package Agents;
-
-
-public class coopAgent extends abstractAgent{
+package agents;
+public class CoopAgent extends AbstractAgent{
 
   @Override
 	public String sendMessage() {
