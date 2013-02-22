@@ -2,15 +2,9 @@ package Agents;
 
 import java.util.ArrayList;
 
-import jade.content.lang.sl.SLCodec;
-import jade.core.Agent;
-import jade.domain.FIPANames;
-import jade.domain.FIPAAgentManagement.FIPAManagementOntology;
-import jade.domain.FIPAAgentManagement.FIPAManagementVocabulary;
-
 public class OwnStrategyErikAndEirik extends abstractAgent {
 
-  public static final String defect = "DEFECT";
+	public static final String defect = "DEFECT";
 	public static final String coop = "COOP";
 	public static final String dilemma = "DILEMMA";
 
@@ -94,6 +88,10 @@ public class OwnStrategyErikAndEirik extends abstractAgent {
 						if (coopInARow >= nrOfRoundsCoopInARow - 1) {
 							coopInARow = 0;
 							message = coop;
+							if(enemydefected.get(enemydefected.size()-1) && nrOfRounds>= nrOfRoundsCoopInARow*3){
+								nrOfRoundsCoopInARow--;
+								message = defect;
+							}
 						} else {
 							message = defect;
 							coopInARow++;
