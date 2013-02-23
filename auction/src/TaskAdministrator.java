@@ -15,14 +15,12 @@ import jade.wrapper.AgentController;
 
 public class TaskAdministrator extends Agent{
 	
-	public TaskAdministrator(){
-		
+	public TaskAdministrator(){	
 	}
 	
 	public void setup(){
 		CreateAgents();
 		doWait(1000);
-		searchForAgent("");
 		printAgentInfo();
 		takeDown();
 	}
@@ -96,7 +94,7 @@ public class TaskAdministrator extends Agent{
 		}
 	}
 	
-	private void searchForAgent(String specification){
+	private AID searchForAgent(String specification){
 		DFAgentDescription dfd = new DFAgentDescription();
 		if(specification.length()>0){
 	        ServiceDescription sd  = new ServiceDescription();
@@ -111,10 +109,6 @@ public class TaskAdministrator extends Agent{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-        System.out.println(result.length + " results" );
-        for(DFAgentDescription agent : result){
-            System.out.println(" " + agent.getName() );
-        }
+        return result[0].getName();
 	}
 }
