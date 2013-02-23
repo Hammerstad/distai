@@ -1,6 +1,9 @@
-import java.util.ArrayList;
+
 
 import jade.core.Agent;
+
+import java.util.ArrayList;
+
 
 public abstract class AbstractSolver extends Agent{
 	
@@ -9,6 +12,7 @@ public abstract class AbstractSolver extends Agent{
 	protected char myChar;
 	public AbstractSolver(char mych){
 		this.myChar = mych;
+		//THIS IS A TEST COMMIT
 	}
 	
 	public abstract int auction(char operator);
