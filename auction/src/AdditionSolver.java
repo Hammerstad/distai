@@ -16,5 +16,9 @@ public class AdditionSolver extends AbstractSolver{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public void setup(){
+		registerService(this, "Addition");
+	}
 
 }

@@ -22,6 +22,7 @@ public class TaskAdministrator extends Agent{
 	public void setup(){
 		CreateAgents();
 		doWait(1000);
+		searchForAgent("");
 		printAgentInfo();
 		takeDown();
 	}
@@ -29,6 +30,7 @@ public class TaskAdministrator extends Agent{
 	public void takeDown(){
 		System.out.println("Taking down agent!");
 		super.takeDown();
+		System.exit(0);
 	}
 	
 	private CyclicBehaviour receiveMessage(){
@@ -76,6 +78,9 @@ public class TaskAdministrator extends Agent{
 		}
 	}
 	
+	/**
+	 * Prints info about all the agents currently active, with *** in front of this agent.
+	 */
 	private void printAgentInfo() {
 		AMSAgentDescription[] agents = null;
 		try {
@@ -93,9 +98,11 @@ public class TaskAdministrator extends Agent{
 	
 	private void searchForAgent(String specification){
 		DFAgentDescription dfd = new DFAgentDescription();
-        ServiceDescription sd  = new ServiceDescription();
-        sd.setType( specification );
-        dfd.addServices(sd);
+		if(specification.length()>0){
+	        ServiceDescription sd  = new ServiceDescription();
+	        sd.setType( specification );
+	        dfd.addServices(sd);			
+		}
         
         DFAgentDescription[] result = null;
 		try {
@@ -106,7 +113,8 @@ public class TaskAdministrator extends Agent{
 		}
         
         System.out.println(result.length + " results" );
-        if (result.length>0)
-            System.out.println(" " + result[0].getName() );
+        for(DFAgentDescription agent : result){
+            System.out.println(" " + agent.getName() );
+        }
 	}
 }

@@ -18,4 +18,7 @@ public class DivisionSolver extends AbstractSolver{
 		return 0;
 	}
 
+	public void setup(){
+		registerService(this, "Division");
+	}
 }

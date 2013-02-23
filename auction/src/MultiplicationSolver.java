@@ -18,4 +18,7 @@ public class MultiplicationSolver extends AbstractSolver{
 		return 0;
 	}
 
+	public void setup(){
+		registerService(this, "Multiplication");
+	}
 }
