@@ -1,8 +1,12 @@
-package Agents;
-
 import java.util.ArrayList;
 
-public class OwnStrategyErikAndEirik extends abstractAgent {
+import jade.content.lang.sl.SLCodec;
+import jade.core.Agent;
+import jade.domain.FIPANames;
+import jade.domain.FIPAAgentManagement.FIPAManagementOntology;
+import jade.domain.FIPAAgentManagement.FIPAManagementVocabulary;
+
+public class OwnStrategyErikAndEirik extends AbstractAgent {
 
 	public static final String defect = "DEFECT";
 	public static final String coop = "COOP";
@@ -24,6 +28,7 @@ public class OwnStrategyErikAndEirik extends abstractAgent {
 
 	public String sendMessage() {
 		wedefected.add(message.equals(defect));
+		System.out.println(this + " sending message: " + message);
 		return message;
 	}
 
@@ -31,6 +36,7 @@ public class OwnStrategyErikAndEirik extends abstractAgent {
 	// defect 2 5
 	// coop 0 3
 	public void receiveMessage(String msg) {
+		System.out.println(this + ": " + msg + " ");
 
 		if (msg.equals("5")) { // enemy coop
 			enemyAllwaysDefect = false;
@@ -54,8 +60,7 @@ public class OwnStrategyErikAndEirik extends abstractAgent {
 			wedefected.add(false);
 		} else {
 			// WRONG!
-			System.out
-					.println("THE POINTS ARE WRONG IN ERIK AND EIRIK's STRATEGY!!!!");
+			System.out.println("THE POINTS ARE WRONG IN ERIK AND EIRIK's STRATEGY!!!!");
 		}
 
 		if (enemyAllaysCoop) { // If enemy is only coop, keep defecting.
@@ -88,10 +93,6 @@ public class OwnStrategyErikAndEirik extends abstractAgent {
 						if (coopInARow >= nrOfRoundsCoopInARow - 1) {
 							coopInARow = 0;
 							message = coop;
-							if(enemydefected.get(enemydefected.size()-1) && nrOfRounds>= nrOfRoundsCoopInARow*3){
-								nrOfRoundsCoopInARow--;
-								message = defect;
-							}
 						} else {
 							message = defect;
 							coopInARow++;

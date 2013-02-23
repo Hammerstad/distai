@@ -1,15 +1,17 @@
-package agents;
+
 public class TitForTat extends AbstractAgent {
 
-  private String message = coop;
+  private static String message = coop;
 
 	@Override
 	public String sendMessage() {
+		System.out.println(this + " sending message: " + message);
 		return message;
 	}
 
 	@Override
 	public void receiveMessage(String msg) {
+		System.out.println(this + ": " + msg + " ");
 		if(msg.equals("5")){
 			message = coop;
 		}else if(msg.equals("3")){

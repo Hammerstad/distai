@@ -1,10 +1,12 @@
 
-public class TitForEveryOtherTat extends abstractAgent{
+
+public class TitForEveryOtherTat extends AbstractAgent{
 
   String message = coop;
 	boolean defected = false;
 	@Override
 	public String sendMessage() {
+		System.out.println(this + " sending message: " + message);
 		return message;
 	}
 
@@ -14,6 +16,7 @@ public class TitForEveryOtherTat extends abstractAgent{
 	 */
 	@Override
 	public void receiveMessage(String msg) {
+		System.out.println(this + ": " + msg + " ");
 		if(msg.equals("5")){
 			message = coop;
 		}else if(msg.equals("3")){

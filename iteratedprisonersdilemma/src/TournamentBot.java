@@ -1,9 +1,19 @@
-package agents;
+
+
 import jade.core.Agent;
+import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.WrapperBehaviour;
+import jade.domain.AMSService;
+import jade.domain.FIPAAgentManagement.AMSAgentDescription;
+import jade.domain.FIPAAgentManagement.SearchConstraints;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import jade.wrapper.AgentContainer;
+import jade.wrapper.AgentController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,19 +24,53 @@ public class TournamentBot extends Agent {
 	private Map<Agent, Integer> scores;
 
 	private Map<Agent, Integer> RSCORE;
-	private int NROFRNDS = 0;
+	private static int NROFRNDS = 0;
 
 	public TournamentBot() {
 		allAgents = new ArrayList<Agent>();
-		allAgents.add(new CoopAgent());
-		allAgents.add(new DefectAgent());
-		allAgents.add(new TitForTat());
+		AMSAgentDescription[] agents = null;
+		AgentContainer c = getContainerController();
+		try {
+			Agent coop = new CoopAgent();
+			AgentController a = c.acceptNewAgent("test", coop);
+			// a.start();
+		} catch (Exception e) {
+			System.out.println("FUCK!");
+			System.out.println(e);
+		}
+		try {
+			SearchConstraints d = new SearchConstraints();
+			d.setMaxResults(new Long(-1));
+			agents = AMSService.search(this, new AMSAgentDescription(), d);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		System.out.println(Arrays.toString(agents));
+
+		// allAgents.add(new CoopAgent());
+		// allAgents.add(new DefectAgent());
+		// allAgents.add(new TitForTat());
 		activeAgents = new Agent[2];
+		// for (final Agent agent : allAgents) {
+		// try {
+		// new Thread(new Runnable() {
+		//
+		// @Override
+		// public void run() {
+		// agent.run();
+		//
+		// }
+		// }).start();
+		// } catch (Exception e) {
+		// System.out.println("FAK");
+		//
+		// }
+		// }
 		scores = new HashMap<>();
 		RSCORE = new HashMap<>();
 	}
-	
-	private void reset(){
+
+	private void reset() {
 		allAgents = new ArrayList<Agent>();
 		allAgents.add(new CoopAgent());
 		allAgents.add(new DefectAgent());
@@ -34,14 +78,13 @@ public class TournamentBot extends Agent {
 		activeAgents = new Agent[2];
 		scores = new HashMap<>();
 		RSCORE = new HashMap<>();
-		
+
 	}
 
 	@Override
 	public void setup() {
-		TournamentBot tb = new TournamentBot();
 		for (NROFRNDS = 10; NROFRNDS < 40; NROFRNDS += 10) {
-			tb.runTournament();
+			this.runTournament();
 			calculateScores();
 			this.reset();
 		}
@@ -52,7 +95,7 @@ public class TournamentBot extends Agent {
 			activeAgents[0] = agent;
 			for (Agent secondAgent : allAgents) {
 				if (agent.equals(secondAgent))
-					return;
+					continue;
 				activeAgents[1] = secondAgent;
 				for (int i = 0; i < NROFRNDS; i++) {
 					runTournamentBetweenTwoAgents();
@@ -70,20 +113,24 @@ public class TournamentBot extends Agent {
 	}
 
 	private void presentPrisonersWithDilemma() {
+		System.out.println("SENDING DILEMMA TO ACTIVE AGENTS: " + Arrays.toString(activeAgents));
 		ACLMessage msg = new ACLMessage(ACLMessage.CFP);
 		msg.setContent("DILEMMA");
 		msg.setSender(getAID());
 		msg.addReceiver(activeAgents[0].getAID());
 		msg.addReceiver(activeAgents[1].getAID());
 		send(msg);
+		System.out.println("SENT!");
 	}
 
 	private String[] receiveAnswers() {
+		System.out.println("Trying to receive!");
 		String[] answers = new String[2];
 		for (int i = 0; i < 2; i++) {
 			String[] temp = receiveAnswer();
 			answers[Integer.parseInt(temp[0])] = temp[1];
 		}
+		System.out.println("Received?");
 		return answers;
 	}
 
@@ -118,6 +165,7 @@ public class TournamentBot extends Agent {
 	}
 
 	private String[] receiveAnswer() {
+		System.out.println("RECEIVE!!");
 		String[] decisions = new String[2];
 		MessageTemplate m1 = MessageTemplate.MatchPerformative(ACLMessage.PROPOSE);
 		ACLMessage message = blockingReceive(m1);
@@ -130,15 +178,27 @@ public class TournamentBot extends Agent {
 				decisions[1] = message.getContent();
 			}
 		}
+		System.out.println("HOLY DIVAH!");
 		return decisions;
 	}
 
 	private void calculateScores() {
+		System.out.println("CALCULATE " + NROFRNDS);
+		for (Agent agent : allAgents) {
+			System.out.println("Agent " + agent + " scored " + scores.get(agent));
+		}
+		Behaviour b = new CyclicBehaviour() {
 
+			@Override
+			public void action() {
+				// TODO Auto-generated method stub
+
+			}
+		};
+		Behaviour w = new WrapperBehaviour(b) {
+			public boolean done() {
+				return true;
+			}
+		};
 	}
-
-	public static void Main(String[] args) {
-		Agent a = new TournamentBot();
-	}
-
 }
