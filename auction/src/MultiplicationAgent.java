@@ -1,7 +1,7 @@
 
-public class MuliplicationSolver extends AbstractSolver{
+public class MultiplicationAgent extends AbstractSolver{
 	private final static char mul = '*';
-	public MuliplicationSolver() {
+	public MultiplicationAgent() {
 		super(mul);
 		// TODO Auto-generated constructor stub
 	}

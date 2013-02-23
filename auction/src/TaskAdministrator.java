@@ -59,10 +59,10 @@ public class TaskAdministrator extends Agent{
 	private boolean CreateAgents(){
 		AgentContainer a = getContainerController();
 		try {
-			AgentController b = a.createNewAgent("Addition", "Addition", null);
-			AgentController c = a.createNewAgent("Subtraction", "Subtraction", null);
-			AgentController d = a.createNewAgent("Multiplication", "Multiplication", null);
-			AgentController e = a.createNewAgent("Division", "Division", null);
+			AgentController b = a.createNewAgent("Addition", "AdditionSolver", null);
+			AgentController c = a.createNewAgent("Subtraction", "SubtractionSolver", null);
+			AgentController d = a.createNewAgent("Multiplication", "MultiplicationSolver", null);
+			AgentController e = a.createNewAgent("Division", "DivisionSolver", null);
 			b.start();
 			c.start();
 			d.start();
@@ -71,6 +71,7 @@ public class TaskAdministrator extends Agent{
 			return true;
 		} catch (Exception e) {
 			System.out.println("Failed to create agensts!");
+			System.err.println(e);
 			return false;
 		}
 	}
