@@ -5,10 +5,8 @@ public class AdditionSolver extends AbstractSolver{
 		super(add);
 	}
 
-
-
 	@Override
-	public double result(double num1, double num2, char operator) throws Exception{
+	public double result(double num1, double num2, char operator){
 		return num1+num2;
 	}
 

@@ -6,11 +6,6 @@ public class SubtractionSolver extends AbstractSolver{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public int auction(char operator) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public double result(double num1, double num2, char operator) {
