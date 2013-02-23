@@ -12,11 +12,10 @@ public abstract class AbstractSolver extends Agent{
 	protected char myChar;
 	public AbstractSolver(char mych){
 		this.myChar = mych;
-		//THIS IS A TEST COMMIT
 	}
-	
-	public abstract int auction(char operator);
-	
-	public abstract double result(double num1, double num2, char operator);
+	public int auction(char operator) {
+		return operator==myChar? operations.size()+1 : 1000;
+	}
+	public abstract double result(double num1, double num2, char operator) throws Exception;
 	
 }
