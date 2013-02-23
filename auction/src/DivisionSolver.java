@@ -3,7 +3,6 @@ public class DivisionSolver extends AbstractSolver{
 	private final static char div = '/';
 	public DivisionSolver() {
 		super(div);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -12,4 +11,7 @@ public class DivisionSolver extends AbstractSolver{
 		return 0;
 	}
 
+	public void setup(){
+		registerService(this, "Division");
+	}
 }
