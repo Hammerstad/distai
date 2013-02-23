@@ -5,16 +5,11 @@ public class AdditionSolver extends AbstractSolver{
 		super(add);
 	}
 
-	@Override
-	public int auction(char operator) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
-	public double result(double num1, double num2, char operator) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double result(double num1, double num2, char operator) throws Exception{
+		return num1+num2;
 	}
 	
 	public void setup(){
