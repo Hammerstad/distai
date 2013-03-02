@@ -10,7 +10,7 @@ public class SubtractionSolver extends AbstractSolver{
 	@Override
 	public double result(double num1, double num2, char operator) {
 		// TODO Auto-generated method stub
-		return 0;
+		return num1-num2;
 	}
 
 	public void setup(){
