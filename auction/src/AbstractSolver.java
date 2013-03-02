@@ -91,7 +91,7 @@ public abstract class AbstractSolver extends Agent{
 		DFAgentDescription dfd = new DFAgentDescription();
 		dfd.setName(getAID());
 		ServiceDescription sd = new ServiceDescription();
-		sd.setType("buyer");
+		sd.setType(service);
 		sd.setName(getLocalName());
 		dfd.addServices(sd);
 		try {
