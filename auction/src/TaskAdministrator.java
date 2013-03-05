@@ -18,6 +18,11 @@ public class TaskAdministrator extends Agent{
 	public TaskAdministrator(){	
 	}
 	
+	public static void main(String[] args) {
+		TaskAdministrator ta = new TaskAdministrator();
+		ta.setup();
+	}
+	
 	public void setup(){
 		CreateAgents();
 		doWait(1000);
@@ -80,12 +85,13 @@ public class TaskAdministrator extends Agent{
 	 * Prints info about all the agents currently active, with *** in front of this agent.
 	 */
 	private void printAgentInfo() {
-		AMSAgentDescription[] agents = null;
+		AMSAgentDescription[] agents = new AMSAgentDescription[10];
 		try {
 			SearchConstraints c = new SearchConstraints();
 			c.setMaxResults(new Long(-1));
 			agents = AMSService.search(this, new AMSAgentDescription(), c);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		AID myID = getAID();
 		for (int i = 0; i < agents.length; i++) {

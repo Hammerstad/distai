@@ -1,6 +1,7 @@
 
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
 
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -9,6 +10,8 @@ import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.lang.acl.ACLMessage;
+import jade.lang.acl.MessageTemplate;
 
 
 
@@ -31,6 +34,7 @@ public abstract class AbstractSolver extends Agent{
 				if(operations.get(i).accepted){
 					doWait(1000);
 					send(operations.get(i).aid, result(operations.get(i).num1, operations.get(i).num2, operations.get(i).oper));
+					break;
 				}
 			}
 			
@@ -38,7 +42,11 @@ public abstract class AbstractSolver extends Agent{
 	}
 	
 	public void send(AID receiver, double result){
-		
+		ACLMessage acl = new ACLMessage(ACLMessage.PROPOSE);
+		acl.setSender(getAID());
+		acl.setContent(result + ""); //TODO: skal den sende meir enn berre resultat?
+		acl.addReceiver(receiver);
+		send(acl);
 	}
 	
 	public void receive(String s, AID aid){
