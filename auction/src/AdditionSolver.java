@@ -11,6 +11,7 @@ public class AdditionSolver extends AbstractSolver{
 	}
 	
 	public void setup(){
+		super.setup();
 		registerService(this, "Addition");
 	}
 

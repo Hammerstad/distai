@@ -12,6 +12,7 @@ public class MultiplicationSolver extends AbstractSolver{
 	}
 
 	public void setup(){
+		super.setup();
 		registerService(this, "Multiplication");
 	}
 }

@@ -14,6 +14,7 @@ public class SubtractionSolver extends AbstractSolver{
 	}
 
 	public void setup(){
+		super.setup();
 		registerService(this, "Subtraction");
 	}
 }

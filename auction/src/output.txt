@@ -1,0 +1,272 @@
+eirik@hammerstad:~/workspace/distai/auction/src$ bash kjor.bash admin:TaskAdministrator
+Compiling ./AbstractSolver.java
+Compiling ./AdditionSolver.java
+Note: ./AdditionSolver.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Compiling ./DivisionSolver.java
+Note: ./DivisionSolver.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Compiling ./MultiplicationSolver.java
+Note: ./MultiplicationSolver.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Compiling ./Operation.java
+Compiling ./Problem.java
+Compiling ./SubtractionSolver.java
+Note: ./SubtractionSolver.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Compiling ./TaskAdministrator.java
+Running program
+Mar 08, 2013 7:08:56 PM jade.core.Runtime beginContainer
+INFO: ----------------------------------
+    This is JADE 4.2.0 - revision 6574 of 2012/06/20 15:38:00
+    downloaded in Open Source, under LGPL restrictions,
+    at http://jade.tilab.com/
+----------------------------------------
+Retrieving CommandDispatcher for platform null
+Mar 08, 2013 7:08:56 PM jade.imtp.leap.LEAPIMTPManager initialize
+INFO: Listening for intra-platform commands on address:
+- jicp://127.0.0.1:1099
+
+Mar 08, 2013 7:08:56 PM jade.core.BaseService init
+INFO: Service jade.core.management.AgentManagement initialized
+Mar 08, 2013 7:08:56 PM jade.core.BaseService init
+INFO: Service jade.core.messaging.Messaging initialized
+Mar 08, 2013 7:08:56 PM jade.core.BaseService init
+INFO: Service jade.core.resource.ResourceManagement initialized
+Mar 08, 2013 7:08:56 PM jade.core.BaseService init
+INFO: Service jade.core.mobility.AgentMobility initialized
+Mar 08, 2013 7:08:56 PM jade.core.BaseService init
+INFO: Service jade.core.event.Notification initialized
+Mar 08, 2013 7:08:56 PM jade.mtp.http.HTTPServer <init>
+INFO: HTTP-MTP Using XML parser com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser
+Mar 08, 2013 7:08:56 PM jade.core.messaging.MessagingService boot
+INFO: MTP addresses:
+http://hammerstad:7778/acc
+Mar 08, 2013 7:08:56 PM jade.core.AgentContainerImpl joinPlatform
+INFO: --------------------------------------
+Agent container Main-Container@127.0.0.1 is ready.
+--------------------------------------------
+Created and started all agents. Total amount: 4
+Information about all agents currently running: 
+*** 0: admin@127.0.0.1:1099/JADE
+    1: ams@127.0.0.1:1099/JADE
+    2: Subtraction@127.0.0.1:1099/JADE
+    3: Division@127.0.0.1:1099/JADE
+    4: df@127.0.0.1:1099/JADE
+    5: Addition@127.0.0.1:1099/JADE
+    6: Multiplication@127.0.0.1:1099/JADE
+Broadcasting initial problem number 0 to all the agents
+Broadcasting initial problem number 1 to all the agents
+Broadcasting initial problem number 2 to all the agents
+Broadcasting initial problem number 3 to all the agents
+Broadcasting initial problem number 4 to all the agents
+Preparing to send auction for task: [2, 2, +]
+Sending the following message to all agents: 2 2 + 0
+Preparing to send auction for task: [5, 4, *]
+Sending the following message to all agents: 5 4 * 1
+Preparing to send auction for task: [3, 3, -]
+Sending the following message to all agents: 3 3 - 2
+Preparing to send auction for task: [20, 4, -]
+Sending the following message to all agents: 20 4 - 3
+Preparing to send auction for task: [8, 4, /]
+Sending the following message to all agents: 8 4 / 4
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1,0
+The message contained an offer for problem number 0
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,1001,0
+The message contained an offer for problem number 0
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1002,1
+The message contained an offer for problem number 1
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,1002,1
+The message contained an offer for problem number 1
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,1001,0
+The message contained an offer for problem number 0
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1001,0
+The message contained an offer for problem number 0
+All agents have bid on problem number 0. Accepting offer from Addition
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,2,1
+The message contained an offer for problem number 1
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,1002,1
+The message contained an offer for problem number 1
+We (+) got to solve problem 0
+All agents have bid on problem number 1. Accepting offer from Multiplication
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1003,2
+The message contained an offer for problem number 2
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,3,2
+The message contained an offer for problem number 2
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1003,2
+The message contained an offer for problem number 2
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,1003,2
+The message contained an offer for problem number 2
+We (*) got to solve problem 1
+All agents have bid on problem number 2. Accepting offer from Subtraction
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1004,3
+The message contained an offer for problem number 3
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,4,3
+The message contained an offer for problem number 3
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1004,3
+The message contained an offer for problem number 3
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,1004,3
+The message contained an offer for problem number 3
+All agents have bid on problem number 3. Accepting offer from Subtraction
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1005,4
+The message contained an offer for problem number 4
+We (-) got to solve problem 2
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,1005,4
+The message contained an offer for problem number 4
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1005,4
+The message contained an offer for problem number 4
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,5,4
+The message contained an offer for problem number 4
+We (-) got to solve problem 3
+All agents have bid on problem number 4. Accepting offer from Division
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: 4.0,-1,0
+The message contains a solution for problem number 0
+Preparing to send auction for task: [4.0, 3, -]
+Sending the following message to all agents: 4.0 3 - 0
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: 20.0,-1,1
+The message contains a solution for problem number 1
+We (/) got to solve problem 4
+Preparing to send auction for task: [20.0, 10, /]
+Sending the following message to all agents: 20.0 10 / 1
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: 0.0,-1,2
+The message contains a solution for problem number 2
+Preparing to send auction for task: [0.0, 17, +]
+Sending the following message to all agents: 0.0 17 + 2
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: 16.0,-1,3
+The message contains a solution for problem number 3
+Preparing to send auction for task: [16.0, 2, /]
+Sending the following message to all agents: 16.0 2 / 3
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1002,0
+The message contained an offer for problem number 0
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,3,0
+The message contained an offer for problem number 0
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1002,0
+The message contained an offer for problem number 0
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: 2.0,-1,4
+The message contains a solution for problem number 4
+Preparing to send auction for task: [2.0, 3, *]
+Sending the following message to all agents: 2.0 3 * 4
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,1002,0
+The message contained an offer for problem number 0
+All agents have bid on problem number 0. Accepting offer from Subtraction
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1003,1
+The message contained an offer for problem number 1
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,1004,1
+The message contained an offer for problem number 1
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1003,1
+The message contained an offer for problem number 1
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,3,1
+The message contained an offer for problem number 1
+We (-) got to solve problem 0
+All agents have bid on problem number 1. Accepting offer from Division
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,4,2
+The message contained an offer for problem number 2
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,1005,2
+The message contained an offer for problem number 2
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1004,2
+The message contained an offer for problem number 2
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,1004,2
+The message contained an offer for problem number 2
+We (/) got to solve problem 1
+All agents have bid on problem number 2. Accepting offer from Addition
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1005,3
+The message contained an offer for problem number 3
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,1006,3
+The message contained an offer for problem number 3
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,1005,3
+The message contained an offer for problem number 3
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,5,3
+The message contained an offer for problem number 3
+We (+) got to solve problem 2
+All agents have bid on problem number 3. Accepting offer from Division
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: NaN,1006,4
+The message contained an offer for problem number 4
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: NaN,1007,4
+The message contained an offer for problem number 4
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: NaN,6,4
+The message contained an offer for problem number 4
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: NaN,1006,4
+The message contained an offer for problem number 4
+We (/) got to solve problem 3
+All agents have bid on problem number 4. Accepting offer from Multiplication
+Task Administrator received message from Subtraction@127.0.0.1:1099/JADE!
+Content: 1.0,-1,0
+The message contains a solution for problem number 0
+We have solved the problem!
+ ID: 0
+Answer: 1.0
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: 2.0,-1,1
+The message contains a solution for problem number 1
+We have solved the problem!
+ ID: 1
+Answer: 2.0
+Task Administrator received message from Addition@127.0.0.1:1099/JADE!
+Content: 17.0,-1,2
+The message contains a solution for problem number 2
+We have solved the problem!
+ ID: 2
+Answer: 17.0
+Task Administrator received message from Division@127.0.0.1:1099/JADE!
+Content: 8.0,-1,3
+The message contains a solution for problem number 3
+We have solved the problem!
+ ID: 3
+Answer: 8.0
+We (*) got to solve problem 4
+Task Administrator received message from Multiplication@127.0.0.1:1099/JADE!
+Content: 6.0,-1,4
+The message contains a solution for problem number 4
+We have solved the problem!
+ ID: 4
+Answer: 6.0
+We are done, tearing down system.
+Taking down agent!
+Mar 08, 2013 7:08:57 PM jade.domain.ams$3 run
+WARNING: >>>>>>>>> Main Container JVM is terminating. Activate platform shutdown
+
